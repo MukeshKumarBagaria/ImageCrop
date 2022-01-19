@@ -4,17 +4,27 @@ const ctx = canvas.getContext("2d");
 let img = new Image();
 let fileName = "";
 
+
 const downloadBtn = document.getElementById("download-btn");
 const uploadFile = document.getElementById("upload-file");
 const revertBtn = document.getElementById("revert-btn");
 
-// Filter GrayScale
+// Filter & Effect Handlers
 document.addEventListener("click", e => {
   if (e.target.classList.contains("filter-btn")) {
         if (e.target.classList.contains("GrayScale")) {
       Caman("#canvas", img, function() {
         this.vintage().render();
       });
+    } else if (e.target.classList.contains("crop")) {
+      Caman("#canvas",img, function () {
+        // width, height, x, y
+        this.crop((img.width)/3, img.height);
+      
+        // Still have to call render!
+        this.render();
+      });
+
     } 
   }
 });
@@ -94,17 +104,3 @@ function download(canvas, filename) {
   // Dispatch event
   link.dispatchEvent(e);
 }
-
-
-
-//Image croping functionality (i have to debug)
-// else if (e.target.classList.contains("crop")) {
-//     Caman("#canvas",img, function () {
-//       // width, height, x, y
-//       this.crop(100, 100);
-    
-//       // Still have to call render!
-//       this.render();
-//     });
-
-//   } 
