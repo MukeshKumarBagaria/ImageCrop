@@ -1,0 +1,14 @@
+canvas {
+    margin: auto;
+    background: #ececec;
+    width: 100%;
+  }
+  
+  .btn-disabled {
+    color: #fff !important;
+  }
+.footer{
+ text-align: center;
+ margin-top: 50px;
+ color: red;
+}  
